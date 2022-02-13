@@ -61,7 +61,46 @@ export const MovieCardContainer = styled(Link)`
 
 export const MovieCardTitle = styled.div`
     font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
     color:white;
+    font-size: 16px;
+    line-height: 23px;
+    
+    @media (min-width: 700px){
+        font-size: 24px;
+        line-height: 32px;
+    }
+`
+export const LineGroups = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 8px;
+
+    align-items: center;
+    justify-content: center;
+`
+
+export const ReleaseYear = styled.div`
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    color: #9e9e9e;
+
+    ::before{
+        content:"";
+        display:inline-block;
+        min-width: 5px;
+        min-height: 5px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    @media (min-width: 700px){
+        font-size:16px;
+        line-height: 32px;
+    }
 `

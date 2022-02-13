@@ -5,7 +5,7 @@ import { moviesData } from "../../GeneralUse/Function/Api/type"
 import { LinkButton } from "../../GeneralUse/StyledComponents/generalStyledComponent"
 import Genres from "../Genres"
 import Ratings from "../Ratings"
-import { MovieCardContainer, MovieCardTitle, MovieDetail } from "./styledComponent"
+import { LineGroups, MovieCardContainer, MovieCardTitle, MovieDetail, ReleaseYear } from "./styledComponent"
 
 const MovieCard: React.FC<{data: moviesData, asLink?: boolean}> = ({data, asLink = true}) => {
     const context = useContext(MainContext)
@@ -28,12 +28,21 @@ const MovieCard: React.FC<{data: moviesData, asLink?: boolean}> = ({data, asLink
         
     }
     const path = data.original_title? `/movie/${data.id}` : `/tv/${data.id}`
+    
+    //get year only from formar yyyy-mm-dd
+    const beautyYear = (date?:string) => {
+        if(!date) return " "
+        return date.split("-")[0]
+    }
     return(
             <MovieCardContainer className={asLink? "links" : ""} to={{pathname: path, }} onClick={(e)=> handleClick(e)}>
                 <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
                 <MovieDetail>
                     <Genres data={data.genres? genreNumber : data.genre_ids} />
-                    <Ratings value={4} />
+                    <LineGroups>
+                        <Ratings value={4} />
+                        <ReleaseYear>Release Year : {data.release_date? beautyYear(data.release_date) : beautyYear(data.first_air_date)}</ReleaseYear>
+                    </LineGroups>
                     <MovieCardTitle>{data.original_title ? data.original_title : data.original_name}</MovieCardTitle>
                 </MovieDetail>
                 {asLink && <LinkButton>Watch Now &gt;</LinkButton>}

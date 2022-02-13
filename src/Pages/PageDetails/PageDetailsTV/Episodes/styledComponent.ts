@@ -18,14 +18,18 @@ export const EpisodesHeader = styled.div`
 `
 
 export const TitleEpisode = styled.div`
-        font-size: 24px;
         font-weight: 700;
+        font-size: 24px;
         line-height: 28px;
+        
+        @media (min-width: 700px){
+            font-size: 20px;
+            line-height: 23.44px;
+        }
 `
 
 export const EpisodeList = styled.div`
     display: flex;
     flex-flow: column nowrap;
-    max-height: 100vh;
-    overflow: auto;
+    padding-right: 1em;
 `

@@ -13,10 +13,35 @@ export const getMovies = async ({category, page = 1}: {category: string, page ?:
 
     return response.json()
 }
+export const getSimilarMovies = async (movie_id: string) => {
+    const url = `https://api.themoviedb.org/3/movie/${movie_id}/similar?language=en-US&page=1`
+    const response = await fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : BearerToken
+        }
+    })
+
+    return response.json()
+}
 
 //get movie detail
-export const getMovieDetail = async (id: number) => {
+export const getMovieDetail = async (id: string) => {
     const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`
+
+    const response = await fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : BearerToken
+        }
+    })
+
+    return response.json()
+}
+export const getMovieCredit = async (id: number) => {
+    const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`
 
     const response = await fetch(url,{
         method: 'GET',
@@ -41,9 +66,21 @@ export const getTV = async ({category, page = 1}: {category: string, page ?: num
 
     return response.json()
 }
+export const getSimiliarTV = async (tv_id: string) => {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/similar?language=en-US&page=1`
+    const response = await fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : BearerToken
+        }
+    })
+
+    return response.json()
+}
 
 //get TV Detail
-export const getTVDetail = async (id: number) => {
+export const getTVDetail = async (id: string) => {
     const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US`
 
     const response = await fetch(url,{
@@ -70,6 +107,35 @@ export const getTVEpisode = async (tvId:number ,episode: number, season: number)
 
     return response.json()
 }
+
+export const getTVCredit = async (tvId:number) => {
+    const url = `https://api.themoviedb.org/3/tv/${tvId}/credits?language=en-US`
+
+    const response = await fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : BearerToken
+        }
+    })
+
+    return response.json()
+}
+export const getTVEpisodeImage = async (tv_id: number, season_number: number, episode_number: number) => {
+    const url = `https://api.themoviedb.org/3/tv/${tv_id}/season/${season_number}/episode/${episode_number}/images`
+
+    const response = await fetch(url,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : BearerToken
+        }
+    })
+
+    return response.json()
+}
+
+
 
 
 export const getGenre = async () => {

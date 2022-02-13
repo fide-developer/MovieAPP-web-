@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import PageDetailsTV from './Pages/PageDetails/PageDetailsTV';
 import Header from './components/Header';
+import PageDetailsMovie from './Pages/PageDetails/PageDetailsMovie';
 
 
 export const MainContext = React.createContext<{genre: genre[], movieData?: moviesData, setMovieData: any} | null>(null)
@@ -29,7 +30,7 @@ const App: React.FC = () => {
           {/* <Header /> */}
           <Route path='/' element={<Home />} />
           <Route path='/tv/:id' element={<PageDetailsTV />} />
-          {/* <Route path='/movie/:id' element={<PageDetailsMovie />} /> */}
+          <Route path='/movie/:id' element={<PageDetailsMovie />} />
           <Route path='*' element={<Home />} />
         </Routes>
       </MainContext.Provider>

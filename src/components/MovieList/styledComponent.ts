@@ -16,11 +16,20 @@ export const HeaderMovieList = styled.div`
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 0 1em;
     width: 100%;
     ${TitleLabel}{
-        font-size: 32px;
-        line-height: 37.5px;
+        font-size: 20px;
+        line-height: 23.44px;
+        
+        @media (min-width: 700px){
+            font-size: 32px;
+            line-height: 37.5px;
+        }
+    }
+    
+    @media (min-width: 700px){
+        padding: 0 10%;
     }
 `
 
@@ -31,8 +40,6 @@ export const HideScroll = styled.div<{height: string}>`
     overflow: hidden;
 `
 export const MovieListContainer = styled.div<{paddingBottom:string}>`
-    
-    padding-left: 10%;
     overflow-x: auto;
     padding-bottom: ${props => props.paddingBottom};
     display: flex;
@@ -40,15 +47,24 @@ export const MovieListContainer = styled.div<{paddingBottom:string}>`
     gap:30px;
     width: 100%;
     overflow-y: hidden;
+    padding-left: 1em;
+    
+    @media (min-width: 700px){
+        padding-left: 10%;
+    }
 `
 
 export const MovieListItem = styled.div`
     display:flex;
     align-items: center;
     justify-content: center;
-    width: 292px;
     gap: 30px;
     position:relative;
     background-color:white;
     overflow:hidden;
+    width: 160px;
+    
+    @media (min-width: 700px){
+        width: 292px;
+    }
 `

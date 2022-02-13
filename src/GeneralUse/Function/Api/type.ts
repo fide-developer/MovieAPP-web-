@@ -15,7 +15,9 @@ export type moviesData = {
     vote_average: number,
     name?: string,
     original_name?: string,
-    genres?: genre[]
+    genres?: genre[],
+    release_date?: string,
+    first_air_date?: string
 }
 
 export type seasonType = {
@@ -56,4 +58,27 @@ production_code: string,
 season_number: number,
 vote_average: number,
 vote_count: number
+}
+
+export type cast = {
+    adult: boolean,
+    character: string,
+    credit_id: string,
+    gender: number,
+    id: number,
+    known_for_department: string,
+    name: string,
+    order: number,
+    original_name: string,
+    popularity: number,
+    profile_path: string
+}
+
+export type tvImageData = {
+    aspect_ratio: number
+    file_path: string,
+    height: number,
+    vote_average: number,
+    vote_count: number,
+    width: number
 }

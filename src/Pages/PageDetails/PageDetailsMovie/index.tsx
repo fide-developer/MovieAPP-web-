@@ -1,15 +1,13 @@
-
-import { useContext, useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { MainContext } from "../../../App"
 import MovieCard from "../../../components/MovieCard"
 import MovieList from "../../../components/MovieList"
-import { getSimiliarTV, getTVDetail } from "../../../GeneralUse/Function/Api"
+import { getMovieDetail, getSimilarMovies} from "../../../GeneralUse/Function/Api"
 import { moviesData, tvDetailType } from "../../../GeneralUse/Function/Api/type"
 import { Section } from "../../../GeneralUse/StyledComponents/generalStyledComponent"
 import CastDetail, { castType } from "../CastDetail"
-import Episodes from "./Episodes"
 import Synopsis from "../Synopsis"
+import Episodes from "./Episodes"
 import { AboutMovie, MovieDetailPoster, MovieDetails, MovieDetailsData, PageDetailsContainer } from "./styledComponent"
 
 export enum categoryType {
@@ -17,22 +15,19 @@ export enum categoryType {
 }
 
 const PageDetailsTV: React.FC = () => {
-    const [tvDetail, setTvDetail] = useState<tvDetailType>()
-    const [moviesDetail, setMoviesDetail] = useState<moviesData>()
+    const [movieData, setMoviesDetail] = useState<moviesData>()
     const [recommendationList, setRecommendationList] = useState<moviesData[]>()
-
-    const context = useContext(MainContext)
 
     const {id} = useParams()
     
     useEffect(()=>{
         if(!id) return
-        getTVDetail(id).then(data=> {
-            setTvDetail(data)
+        getMovieDetail(id).then(data=> {
             setMoviesDetail(data)
+            console.log(data)
         })
 
-        getSimiliarTV(id)
+        getSimilarMovies(id)
             .then(data=>{
                 setRecommendationList(data.results)
             })
@@ -43,15 +38,15 @@ const PageDetailsTV: React.FC = () => {
         <PageDetailsContainer>
             <MovieDetails>
                 <MovieDetailPoster>
-                    {moviesDetail && <MovieCard data={moviesDetail} asLink={false}/>}
+                    {movieData && <MovieCard data={movieData} asLink={false}/>}
                 </MovieDetailPoster>
                 
                 <MovieDetailsData>
                     <AboutMovie>
-                        <Synopsis synopsisText={tvDetail ? tvDetail.overview : ""}/>
-                        <CastDetail ids={tvDetail?.id} type={castType.TV}/>
+                        <Synopsis synopsisText={movieData ? movieData.overview : ""}/>
+                        <CastDetail ids={movieData?.id} type={castType.Movie}/>
                     </AboutMovie>
-                    {tvDetail && <Episodes runtime={tvDetail.episode_run_time} data={tvDetail.seasons} tvId={tvDetail.id}/>}
+                    {movieData && <Episodes data={movieData}/>}
                 </MovieDetailsData>
             </MovieDetails>
             <Section>

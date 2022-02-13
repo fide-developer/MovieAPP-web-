@@ -10,7 +10,7 @@ const CompMovieBanner:React.FC<{data: moviesData}> = ({data}) => {
 
     return (
         <MovieBannerContainer>
-            <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}></img>
+            {data.backdrop_path && <img src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}></img>}
             <MovieDetail>
                 <Genres data={data.genre_ids}/>
                 <Ratings value={5} />
