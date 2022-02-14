@@ -7,7 +7,9 @@ import { EpisodeList, EpisodesHeader, EpisodesListContainer, TitleEpisode } from
 
 const Episodes: React.FC<{data: seasonType[], tvId: number, runtime:any[]}> = ({data, tvId, runtime}) => {
     const [selectedSeason, setSelectedSeason] = useState<number>(0)
-    
+    useEffect(()=>{
+        setSelectedSeason(0)
+    },[tvId])
     return(
         <EpisodesListContainer>
             <EpisodesHeader>

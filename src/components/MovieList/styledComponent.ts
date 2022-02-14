@@ -63,8 +63,10 @@ export const MovieListItem = styled.div`
     background-color:white;
     overflow:hidden;
     width: 160px;
+    height: 220px;
     
     @media (min-width: 700px){
         width: 292px;
+        height: 440px;
     }
 `

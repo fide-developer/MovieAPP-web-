@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -19,9 +20,10 @@ export const Section = styled.div`
     padding-top: 18px;
 `
 
-export const RoundedButton = styled.div`
+export const RoundedButton = styled(Link)`
     cursor: pointer;
     color: yellow;
+    text-decoration: none;
     font-weight: 500;
     padding: 16px 48px;
     font-size: 14px;

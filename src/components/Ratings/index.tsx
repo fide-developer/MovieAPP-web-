@@ -6,7 +6,6 @@ import { useEffect } from "react"
 
 
 const Ratings : React.FC<{value:number}> = ({value}) => {
-
     useEffect(()=>{
         // check somthing
         let string = value.toString().split('.')

@@ -7,6 +7,7 @@ export const MovieBannerContainer = styled.div`
     height: 100%;
     overflow: hidden;
     position:relative;
+    
     background: rgba(0,0,0,0.6);
     img{
         position:absolute;
@@ -21,7 +22,7 @@ export const MovieBannerContainer = styled.div`
     align-items: flex-end;
     padding: 10px 1em 40px 1em;
     @media (min-width: 700px){
-        padding: 10px 12%;
+        padding: 10px 10%;
         align-items: center;
     }
 `
@@ -55,8 +56,13 @@ export const DescriptionLabel = styled.div`
     flex-shrink: 1;
     overflow: hidden;
 
+    overflow: hidden;
+
     display: none;
     @media (min-width: 700px){
-        display: block;
+        
+        display: -webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp: 3;
     }
 `

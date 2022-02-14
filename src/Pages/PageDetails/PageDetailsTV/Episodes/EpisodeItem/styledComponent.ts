@@ -126,23 +126,30 @@ export const EpisodeTitle=styled.div`
 
 const PlaceholderAnimation = keyframes`
     0% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
+    }
+    50% {
+        transform: translateX(0%);
     }
     100% {
-        transform: translateX(100%);
+        transform: translateX(-50%);
     }
 `
 
 export const ContentPlaceHolderBackground = styled.span`
     animation: ${PlaceholderAnimation} 1s linear infinite;
-    background: linear-gradient(90deg, rgba(235,235,235,1) 0%, rgba(207,207,207,1) 50%, rgba(235,235,235,1) 100%);
+    background: linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(207,207,207,1) 50%, rgba(235,235,235,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(207,207,207,1) 50%, rgba(235,235,235,1) 100%);
+    background: -moz-linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(207,207,207,1) 50%, rgba(235,235,235,1) 100%);
+    background-blend-mode: darken;
+    opacity: 0.9;
     /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000f0f0f', endColorstr='#00ffffff',GradientType=1 ); */
     display: block;
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
-    width:70%;
+    width:200%;
     will-change: transform;
     z-index: 1;
 `

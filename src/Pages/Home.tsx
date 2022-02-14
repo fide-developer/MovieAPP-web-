@@ -29,7 +29,6 @@ const Home: React.FC = () => {
     })
 
     const LoadMoreContent = () => {
-        console.log("load")
         setLoadMore(true)
         getMovies({category: "popular"})
         .then(data => {
@@ -53,23 +52,22 @@ const Home: React.FC = () => {
         })
     }, [])
 
-    console.log(moviesPopular)
     return(
-        <>
+        <div style={{width:"100%", display: "flex", flexFlow: "column nowrap", overflow:"hidden"}}>
             <Carousel>
                 {bannerMaterial.map((movies: moviesData) => <MovieBanner key={movies.id} data={movies}></MovieBanner>)}
             </Carousel>
             <Section>
                 {/* movie now playing */}
-                {moviesNowPlaying && <MovieList movieCategory='New Release'>
-                    {moviesNowPlaying.map((movies: moviesData) => <MovieCard key={movies.id} data={movies}/>)}
-                </MovieList>}
+                <MovieList movieCategory='New Release' loading={moviesNowPlaying? false : true}>
+                    {moviesNowPlaying && moviesNowPlaying.map((movies: moviesData) => <MovieCard key={movies.id} data={movies}/>)}
+                </MovieList>
                 {/* tv shows */}
-                {tvShow && <MovieList movieCategory='TV Show'>
-                    {tvShow.map((tv: moviesData) => <MovieCard key={tv.id} data={tv}/>)}
-                </MovieList>}
-                {moviesPopular && <MovieList movieCategory='Popular'>
-                    {moviesPopular.map((movie: moviesData) => <MovieCard key={movie.id} data={movie}/>)}
+                <MovieList movieCategory='TV Show' loading={tvShow ? false :true}>
+                    {tvShow && tvShow.map((tv: moviesData) => <MovieCard key={tv.id} data={tv}/>)}
+                </MovieList>
+                {moviesPopular && <MovieList movieCategory='Popular' loading={moviesPopular? false : true}>
+                    {moviesPopular && moviesPopular.map((movie: moviesData) => <MovieCard key={movie.id} data={movie}/>)}
                 </MovieList>}
             </Section>
 
@@ -77,7 +75,7 @@ const Home: React.FC = () => {
             <Section ref={loadRef}>
                 {loadMore && <Loading loadingText="loading more movies for you..." />}
             </Section>
-        </>
+        </div>
     )
 }
 

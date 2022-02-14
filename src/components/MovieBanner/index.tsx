@@ -7,6 +7,7 @@ import Genres from "../Genres"
 
 
 const CompMovieBanner:React.FC<{data: moviesData}> = ({data}) => {
+    const path = data.original_title? `/movie/${data.id}` : `/tv/${data.id}`
 
     return (
         <MovieBannerContainer>
@@ -16,7 +17,7 @@ const CompMovieBanner:React.FC<{data: moviesData}> = ({data}) => {
                 <Ratings value={5} />
                 <TitleLabel>{data.original_title}</TitleLabel>
                 <DescriptionLabel>{data.overview}</DescriptionLabel>
-                <RoundedButton>Watch Now</RoundedButton>
+                <RoundedButton to={path}>Watch Now</RoundedButton>
             </MovieDetail>
         </MovieBannerContainer>
     )

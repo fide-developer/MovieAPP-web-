@@ -5,15 +5,23 @@ import { LinkButton } from "../../GeneralUse/StyledComponents/generalStyledCompo
 export const MovieDetail = styled.div`
     display: flex;
     flex-flow: column nowrap;
+    width: 100%;
     gap: 10px;
     transition: transform .5s ease;
     z-index:1;
 `
 
 export const MovieCardContainer = styled(Link)`
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
     display: flex;
     overflow: hidden;
     flex-flow: column nowrap;
+    min-height: 220px;
     aspect-ratio: 350/527;
     /* position: relative; */
     align-items: flex-start;
@@ -29,9 +37,16 @@ export const MovieCardContainer = styled(Link)`
         left:0;
         width: 100%;
         height:100%;
+        min-height: 440px;
         object-fit: cover;
         mix-blend-mode: multiply;
         transition: transform .5s ease;
+
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
     
     ${LinkButton}{
@@ -73,14 +88,13 @@ export const MovieCardTitle = styled.div`
 export const LineGroups = styled.div`
     display: flex;
     flex-flow: row nowrap;
-    gap: 8px;
+    /* gap: 8px; */
 
     align-items: center;
-    justify-content: center;
 `
 
 export const ReleaseYear = styled.div`
-    visibility: hidden;
+    visibility: collapse;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,6 +103,8 @@ export const ReleaseYear = styled.div`
     font-weight: 400;
     line-height: 12px;
     color: #9e9e9e;
+    flex-shrink: 1;
+    white-space: nowrap;
 
     ::before{
         content:"";

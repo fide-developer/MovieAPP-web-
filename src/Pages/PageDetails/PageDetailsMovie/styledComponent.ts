@@ -27,6 +27,7 @@ export const MovieDetailPoster = styled.div`
     ${MovieCardContainer}{
         aspect-ratio: 375/280;
     }
+    aspect-ratio: 375/280;
     ${ReleaseYear}{
         visibility: visible;
     }
@@ -37,6 +38,7 @@ export const MovieDetailPoster = styled.div`
     height:fit-content;
         @media (min-width: 700px){
             flex:2;
+            aspect-ratio: 350/527;
             ${MovieCardContainer}{
                 aspect-ratio: 350/527;
         }

@@ -9,13 +9,12 @@ export const CarouselContainer = styled.div`
     height: auto;
     min-height: 500px;
     position: relative;
+    overflow: hidden;
     background-color: rgba(0,0,0,0,0.1);
     
-    aspect-ratio: 375/280;
     @media (min-width: 700px){
         width: 100%;
         height: 100vh;
-        aspect-ratio: unset;
     }
 `
 //styled Component for each child inside the Caraousel Component
@@ -24,6 +23,7 @@ export const CaraouselItem = styled.div<{opacityValue: number}>`
     height:100%;
     transition: transform .5 ease;
     position: absolute;
+    overflow:hidden;
     top:0;
     left:0;
     z-index: ${props => props.opacityValue === 0 ? -1 : 0};
