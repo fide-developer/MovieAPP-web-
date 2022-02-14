@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -14,6 +15,9 @@ export const HeaderContainer = styled.div`
     opacity: 0.8;
 
     z-index: 100;
+`
+export const HeaderLogo = styled(Link)`
+    text-decoration: none;
 `
 
 export const GroupMenu = styled.div`
