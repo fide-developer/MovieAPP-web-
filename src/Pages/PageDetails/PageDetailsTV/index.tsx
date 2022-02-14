@@ -17,14 +17,17 @@ export enum categoryType {
 }
 
 const PageDetailsTV: React.FC = () => {
-    const [tvDetail, setTvDetail] = useState<tvDetailType>()
-    const [moviesDetail, setMoviesDetail] = useState<moviesData>()
-    const [recommendationList, setRecommendationList] = useState<moviesData[]>()
+    const [tvDetail, setTvDetail] = useState<tvDetailType|null>()
+    const [moviesDetail, setMoviesDetail] = useState<moviesData|null>()
+    const [recommendationList, setRecommendationList] = useState<moviesData[]|null>()
     const [loadingDetails, setLoadingDetails] = useState<boolean>(false)
 
     const {id} = useParams()
     
     useEffect(()=>{
+        setRecommendationList(null)
+        setTvDetail(null)
+        setMoviesDetail(null)
         setLoadingDetails(true)
         if(!id) return
         window.scrollTo(0,0)

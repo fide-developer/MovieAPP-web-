@@ -4,7 +4,7 @@ import MovieCard from "../../../components/MovieCard"
 import MovieList from "../../../components/MovieList"
 import NotFound from "../../../components/NotFound"
 import { getMovieDetail, getSimilarMovies} from "../../../GeneralUse/Function/Api"
-import { moviesData, tvDetailType } from "../../../GeneralUse/Function/Api/type"
+import { moviesData } from "../../../GeneralUse/Function/Api/type"
 import { Section } from "../../../GeneralUse/StyledComponents/generalStyledComponent"
 import CastDetail, { castType } from "../CastDetail"
 import { ContentPlaceHolderBackground, PlaceHolderText } from "../PageDetailsTV/Episodes/EpisodeItem/styledComponent"
@@ -17,8 +17,8 @@ export enum categoryType {
 }
 
 const PageDetailsTV: React.FC = () => {
-    const [movieData, setMoviesDetail] = useState<moviesData>()
-    const [recommendationList, setRecommendationList] = useState<moviesData[]>()
+    const [movieData, setMoviesDetail] = useState<moviesData| null>()
+    const [recommendationList, setRecommendationList] = useState<moviesData[]|null>()
 
     const[loadingDetails, setLoadingDetails] = useState<boolean>(false)
     const[errorDetails, setErrorDetails] = useState<string|null>(null)
@@ -26,6 +26,8 @@ const PageDetailsTV: React.FC = () => {
     const {id} = useParams()
     
     useEffect(()=>{
+        setMoviesDetail(null)
+        setRecommendationList(null)
         if(!id) return
         window.scrollTo(0,0)
 
