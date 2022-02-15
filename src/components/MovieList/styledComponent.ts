@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { TitleLabel } from "../MovieBanner/styledComponent";
+import { MovieCardContainer } from "../MovieCard/styledComponent";
 
 
 export const MovieGroupContainer = styled.div`
@@ -39,7 +40,7 @@ export const HideScroll = styled.div<{height: string}>`
     position:relative;
     overflow: hidden;
 `
-export const MovieListContainer = styled.div<{paddingBottom:string}>`
+export const MovieListContainer = styled.div<{paddingBottom:string, grabPointer: boolean}>`
     overflow-x: auto;
     padding-bottom: ${props => props.paddingBottom};
     display: flex;
@@ -49,6 +50,11 @@ export const MovieListContainer = styled.div<{paddingBottom:string}>`
     overflow-y: hidden;
     padding-left: 1em;
     
+    cursor: ${props => props.grabPointer ? "grab" : "auto"};
+    ${MovieCardContainer}{
+        cursor: ${props => props.grabPointer ? "grab" : "pointer"};
+    }
+
     @media (min-width: 700px){
         padding-left: 10%;
     }

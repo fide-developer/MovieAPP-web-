@@ -54,7 +54,7 @@ const MovieList: React.FC<{movieCategory: string, loading: boolean}> = ({childre
             <HeaderMovieList><TitleLabel>{movieCategory}</TitleLabel><LinkButton>See More &gt;</LinkButton></HeaderMovieList>
             <HideScroll height={heightCorrection}>
 
-                <MovieListContainer ref={listRef} paddingBottom={listPaddingCorrection} 
+                <MovieListContainer grabPointer={isGrab} ref={listRef} paddingBottom={listPaddingCorrection} 
                 onMouseDown={(e)=>handleClick(e)} 
                 onMouseUp={()=>setIsGrab(false)} 
                 onMouseMove={(e)=> handleMouseGrab(e)}
